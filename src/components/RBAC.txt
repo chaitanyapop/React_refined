@@ -1,0 +1,100 @@
+routes config-
+// routesConfig.js
+import Dashboard from "../pages/Dashboard";
+import Profile from "../pages/Profile";
+import Settings from "../pages/Settings";
+import Login from "../pages/Login";
+
+export const routesConfig = [
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    protected: true, // custom metadata
+    title: "Dashboard",
+    roles: ["admin", "user"], // access control
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+    protected: true,
+    title: "My Profile",
+    roles: ["user"],
+  },
+  {
+    path: "/settings",
+    element: <Settings />,
+    protected: true,
+    title: "Settings",
+    roles: ["admin"],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    protected: false,
+    title: "Login",
+  },
+];
+
+
+ Step 2: Create a ProtectedRoute wrapper
+
+ import { Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ element, roles }) => {
+  const isAuthenticated = localStorage.getItem("authToken");
+  const userRole = localStorage.getItem("role"); // example
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (roles && !roles.includes(userRole)) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return element;
+};
+
+export default ProtectedRoute;
+
+
+ Step 3: Generate Routes Dynamically
+ import { useRoutes } from "react-router-dom";
+import { routesConfig } from "./routesConfig";
+import ProtectedRoute from "./ProtectedRoute";
+
+const AppRoutes = () => {
+  const routes = routesConfig.map((route) => {
+    if (route.protected) {
+      return {
+        path: route.path,
+        element: (
+          <ProtectedRoute element={route.element} roles={route.roles} />
+        ),
+      };
+    }
+    return {
+      path: route.path,
+      element: route.element,
+    };
+  });
+
+  return useRoutes(routes);
+};
+
+export default AppRoutes;
+
+
+ Step 4: Use in App.js
+ import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
+
+export default App;

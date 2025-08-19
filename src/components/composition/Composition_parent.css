@@ -1,0 +1,17 @@
+.composition_container {
+  border: 2px solid rgb(41, 38, 38);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.composition_container > button {
+  width: 80px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: auto;
+}

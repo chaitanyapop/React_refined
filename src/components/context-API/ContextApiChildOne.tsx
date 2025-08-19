@@ -1,0 +1,19 @@
+import { useContext } from "react";
+import Context, { MyContext } from "./Context";
+
+export default function ContextApiChildOne() {
+  let nameContext = useContext(MyContext);
+
+  return (
+    <div>
+      <p>My name is {nameContext.name}</p>
+      <button
+        onClick={() => {
+          nameContext.setName("Nitin");
+        }}
+      >
+        Change Name
+      </button>
+    </div>
+  );
+}
