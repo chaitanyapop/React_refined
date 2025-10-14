@@ -16,10 +16,12 @@ api.interceptors.request.use((config: any) => {
 
 // ✅ Response Interceptor - Handle errors globally
 api.interceptors.response.use(
-  (response) => response,
+  (response) => response, // axios internally treats this as Promise.resolve(response)
   (error) => {
     console.error("API Error:", error);
-    return Promise.reject(error);
+    return Promise.reject(error); // in terms of error we have to explicitly mention that this is an error so that it will execute the
+    // .catch block if we normally return the error then axios will internally treat it as Promise.Resolve(error) therefore we have to mention
+    // Promise.reject(error)
   }
 );
 

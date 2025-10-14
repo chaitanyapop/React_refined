@@ -24,7 +24,6 @@ export default function ApiMain() {
   }
 
   async function updatePost(id: any) {
-    
     try {
       let res = await api.put(`/posts/${id}`, {
         title: "Updated title",
@@ -53,9 +52,9 @@ export default function ApiMain() {
     let controller = new AbortController();
     getPostData(controller);
 
-    () => {
+    return () => {
       controller.abort();
-      controller.signal
+      controller.signal;
     };
   }, []);
   return (
