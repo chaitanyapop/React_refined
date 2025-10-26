@@ -28,7 +28,7 @@ const logger = (store: any) => (next: any) => (action: any) => {
   console.log("Dispatching:", action);
   let result = next(action); // forward the action
   console.log("Next state:", store.getState());
-  return result;
+  // return result;
 };
 
 let store = configureStore({

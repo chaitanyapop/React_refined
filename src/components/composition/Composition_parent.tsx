@@ -12,6 +12,8 @@ export default function Composition_parent(props: any) {
   return (
     <div className="composition_container">
       {childElement}
+      {/* childElement is an array of react components and array of react components
+      are treated as individual component internally by react */}
       <button onClick={endSession}>End Session</button>
     </div>
   );

@@ -98,3 +98,8 @@ function App() {
 }
 
 export default App;
+
+
+----------------------------------------------------------------
+to pass data using routes we have to use handle property and useMatches hook
+to get the idea about the query params we have to use useSearchParms whcih returns an array

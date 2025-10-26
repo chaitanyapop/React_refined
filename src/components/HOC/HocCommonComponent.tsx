@@ -1,7 +1,7 @@
 import { useEffect, useState, type Component } from "react";
 
 function HocCommonComponent(ChildComponent: any) {
-  return function Hoc() {
+  return function () {
     useEffect(() => {
       console.log("hello world");
     }, []);
