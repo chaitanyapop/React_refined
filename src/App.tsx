@@ -53,12 +53,12 @@ function App() {
       {/* <ErrorBoundary>
         <BuggyComponent></BuggyComponent>
       </ErrorBoundary> */}
-      {/* <Main_file></Main_file> */}
+      <Main_file></Main_file>
       {/* <LazyLoadingParent></LazyLoadingParent> */}
       {/* <ContextApiParent></ContextApiParent> */}
       {/* <ApiMain></ApiMain> */}
       {/* <Parent></Parent> */}
-      <Rtk_parent></Rtk_parent>
+      {/* <Rtk_parent></Rtk_parent> */}
 
       {/*Below is the example of routing........ */}
       {/* <Router>

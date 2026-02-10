@@ -35,7 +35,7 @@ export default class Main extends React.Component<any, MainState> {
   shouldComponentUpdate(
     nextProps: Readonly<any>,
     nextState: Readonly<MainState>,
-    nextContext: any
+    nextContext: any,
   ): boolean {
     if (nextProps !== this.props) {
       console.log("executing shouldComponentUpdate 1");
@@ -45,11 +45,11 @@ export default class Main extends React.Component<any, MainState> {
       return true;
     }
     return false;
-  }
+  } // this is mainly used when we want to perform some action before re-rendering happens. E.g cleanup
 
   getSnapshotBeforeUpdate(
     prevProps: Readonly<any>,
-    prevState: Readonly<MainState>
+    prevState: Readonly<MainState>,
   ) {
     return { prevState: prevState, prevProps: prevProps };
   }
@@ -57,7 +57,7 @@ export default class Main extends React.Component<any, MainState> {
   componentDidUpdate(
     prevProps: Readonly<any>,
     prevState: Readonly<MainState>,
-    snapshot?: any
+    snapshot?: any,
   ): void {
     console.log("this is snapshot", snapshot);
     if (
